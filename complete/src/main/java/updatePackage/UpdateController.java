@@ -24,6 +24,8 @@ public class UpdateController {
     	System.out.println("Longitude:"+coverageParams.getLongitude());
     	System.out.println("Latitude:"+coverageParams.getLatitude());
     	System.out.println("SignalStrengthLevel:"+coverageParams.getSignalLevel());
+    	System.out.println("Service provider:"+coverageParams.getNetworkProviderName());
+    	System.out.println("Data speed:"+coverageParams.getDataSpeed());
     }
     /*
     public void update() {
