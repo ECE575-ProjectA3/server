@@ -26,6 +26,9 @@ public class UpdateController {
     	System.out.println("SignalStrengthLevel:"+coverageParams.getSignalLevel());
     	System.out.println("Service provider:"+coverageParams.getNetworkProviderName());
     	System.out.println("Data speed:"+coverageParams.getDataSpeed());
+    	System.out.println("Date:"+coverageParams.getMonth()+"/"+
+    			coverageParams.getMonthDay()+"/"+coverageParams.getYear()+"Time:"+
+    			coverageParams.getHour() + ":" + coverageParams.getMinute());
     }
     /*
     public void update() {
