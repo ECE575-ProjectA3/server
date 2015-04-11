@@ -19,13 +19,11 @@ public class VisualParams {
 	public int    getDate()           { return this.date;           }
 	public int    getTime()           { return this.time;           }
 	
-	public int calcDate(int year, int month, int day) {
-		this.date = (year*10000) + (month*100) + (day);
-		return this.date;
+	public static int calcDate(int year, int month, int day) {
+		return (year*10000) + (month*100) + (day);
 	}
 	
-	public int calcTime(int year, int month, int day, int hour, int minute) {
-		this.time = (hour*100) + (minute);
-		return this.time;
+	public static int calcTime(int hour, int minute) {
+		return (hour*100) + (minute);
 	}
 }
