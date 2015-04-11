@@ -1,32 +1,31 @@
 package updatePackage;
 
 public class VisualParams {
-	private double 	longitude;
-	private double 	latitude;
-	private int		signalStrengthLevel;
+	private double longitude;
+	private double latitude;
+	private int    signalStrength;
+	private int    date;
+	private int    time;
 	
-	public void setLongitude(double longitude) {
-		this.longitude = longitude;
+	public void setLongitude(double longitude)        { this.longitude = longitude;           }
+	public void setLatitude(double latitude)          { this.latitude = latitude;             }
+	public void setSignalStrength(int signalStrength) { this.signalStrength = signalStrength; }
+	public void setDate(int date)                     { this.date = date;                     }
+	public void setTime(int time)                     { this.time = time;                     }
+	
+	public double getLongitude()      { return this.longitude;      }
+	public double getLatitude()       { return this.latitude;       }
+	public int    getSignalStrength() { return this.signalStrength; }
+	public int    getDate()           { return this.date;           }
+	public int    getTime()           { return this.time;           }
+	
+	public int calcDate(int year, int month, int day) {
+		this.date = (year*10000) + (month*100) + (day);
+		return this.date;
 	}
 	
-	public void setLatitude(double latitude) {
-		this.latitude = latitude;
+	public int calcTime(int year, int month, int day, int hour, int minute) {
+		this.time = (hour*100) + (minute);
+		return this.time;
 	}
-	
-	public void setSignalStrengthLevel(int signalStrengthLevel) {
-		this.signalStrengthLevel = signalStrengthLevel;
-	}
-	
-	public double getLongtitude() {
-		return longitude;
-	}
-	
-	public double getLatitude() {
-		return latitude;
-	}
-	
-	public int getSignalStrengthLevel() {
-		return signalStrengthLevel;
-	}
-
 }
