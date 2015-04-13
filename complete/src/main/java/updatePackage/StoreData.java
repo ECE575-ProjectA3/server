@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class StoreData {
 	
@@ -57,5 +58,40 @@ public class StoreData {
 		} catch (SQLException ex) {
 			System.out.println("Unable to perform query operation");
 		}		
-	}		
+	}	
+	
+	public ArrayList<VisualParams> getData(String carrierName) {
+		
+		ArrayList<VisualParams> vpa = new ArrayList<VisualParams>(); 
+		
+		if (carrierName.equals("T-Mobile")) {
+			carrierName = "TMobile";
+		}
+		
+		try {
+			Connection con = null;
+			Statement st = null;
+			String query = "";
+			
+			con = DriverManager.getConnection(url, user, password);
+		    st = con.createStatement();
+		    
+		    query = "SELECT * FROM " + carrierName;
+		    System.out.println(query);
+		    ResultSet rs = st.executeQuery(query);	
+		    
+		    while (rs.next()) {
+		    	VisualParams vp = new VisualParams();
+		    	vp.setLongitude(Double.parseDouble(rs.getString("longitude")));
+		    	vp.setLatitude(Double.parseDouble(rs.getString("latitude")));
+		    	vp.setSignalStrength(Integer.parseInt(rs.getString("signalStrength")));
+		    	vp.setDate(1);
+		    	vp.setTime(2);
+		    	vpa.add(vp);
+		    }
+		} catch (SQLException ex) {
+			System.out.println("Unable to perform query operation");
+		}
+		return vpa;
+	}
 }

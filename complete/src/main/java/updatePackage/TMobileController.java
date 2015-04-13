@@ -1,5 +1,7 @@
 package updatePackage;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +23,13 @@ public class TMobileController {
     	System.out.println("Data speed:"+coverageParams.getDataSpeed());
     	System.out.println("Date-time:"+coverageParams.getDateTime());
     	
+    	/* store the data into database */
     	mStorage.storeSensorData(coverageParams);
+	}
+	
+	@RequestMapping(value="/T-Mobile",method=RequestMethod.GET)
+	public ArrayList<VisualParams> getData() {
+		return mStorage.getData("T-Mobile");		
 	}
 
 }
