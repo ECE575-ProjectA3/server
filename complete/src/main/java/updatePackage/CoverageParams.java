@@ -1,40 +1,67 @@
 package updatePackage;
 
-public class CoverageParams {
-    private double longitude;
-    private double latitude;
-    private int    signalStrength;
-    private String networkProvider;
-    private double dataSpeed;
-    private int    year;
-    private int    month;
-    private int    day;
-    private int    hour;
-    private int    minute;
+class CoverageParams {
 
-    public void setLongitude(double longitude)     { this.longitude = longitude;           }
-    public void setLatitude(double latitude)       { this.latitude = latitude;             }
-    public void setSignalLevel(int signalStrength) { this.signalStrength = signalStrength; }
+    private Double 	longitude;
+    private Double 	latitude;
+    private Integer signalLevel;
+    private String  networkProviderName;
+    private Double  dataSpeed;
+    private Double  dataUploadSpeed;
+    private Integer wifiSignalLevel;
+    private Double  wifiDownloadSpeed;
+    private Double  wifiUploadSpeed;    
+    private String 	dateTime;
 
-    public void setNetworkProvider(String networkProvider) { this.networkProvider = networkProvider; }
-    public void setDataSpeed(double dataSpeed)             { this.dataSpeed = dataSpeed;             }
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
 
-    public void setYear(int year)     { this.year = year;     }
-    public void setMonth(int month)   { this.month = month;   }
-    public void setDay(int day)       { this.day = day;       }
-    public void setHour(int hour)     { this.hour = hour;     }
-    public void setMinute(int minute) { this.minute = minute; }
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
 
-    public double getLongitude()      { return longitude;      }
-    public double getLatitude()       { return latitude;       }
-    public int    getSignalStrength() { return signalStrength; }
+    public void setSignalLevel(Integer signalLevel) {
+        this.signalLevel = signalLevel;
+    }
 
-    public String getNetworkProvider() { return networkProvider; }
-    public double getDataSpeed()       { return dataSpeed;       }
+    public void setNetworkProviderName(String networkProviderName) { this.networkProviderName = networkProviderName;}
 
-    public int getYear()   { return year;   }
-    public int getMonth()  { return month;  }
-    public int getDay()    { return day;    }
-    public int getHour()   { return hour;   }
-    public int getMinute() { return minute; }
+    public void setDataSpeed(Double dataSpeed) { this.dataSpeed = dataSpeed;}
+    
+    public void setDataUploadSpeed(Double dataUploadSpeed) { this.dataUploadSpeed = dataUploadSpeed;}
+    
+    public void setWifiSignalLevel(Integer wifiSignalLevel) { this.wifiSignalLevel = wifiSignalLevel;}
+    
+    public void setWifiDownloadSpeed(Double wifiDownloadSpeed) { this.wifiDownloadSpeed = wifiDownloadSpeed;}
+    
+    public void setWifiUploadSpeed(Double wifiUploadSpeed) { this.wifiUploadSpeed = wifiUploadSpeed;}
+
+    public void setDateTime(String dateTime) {this.dateTime = dateTime;}
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public Integer getSignalLevel() {
+        return signalLevel;
+    }
+
+    public String getNetworkProviderName() {return networkProviderName;}
+
+    public Double getDataSpeed() { return dataSpeed;}
+    
+    public Double getDataUploadSpeed() { return dataUploadSpeed; }
+    
+    public Integer getWifiSignalLevel() { return wifiSignalLevel; }
+    
+    public Double getWifiDownloadSpeed() { return wifiDownloadSpeed;}
+    
+    public Double getWifiUploadSpeed() { return wifiUploadSpeed;}
+
+    public String getDateTime() { return dateTime;}
 }

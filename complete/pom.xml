@@ -19,9 +19,9 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1.1</version>
+        	<groupId>mysql</groupId>
+        	<artifactId>mysql-connector-java</artifactId>
+        	<version>5.1.35</version>
         </dependency>
     </dependencies>
 
@@ -31,9 +31,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>updatePackage.Application</mainClass>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -42,11 +39,6 @@
         <repository>
             <id>spring-releases</id>
             <url>https://repo.spring.io/libs-release</url>
-        </repository>
-        <repository>
-            <id>json-simple</id>
-            <name>json-simple</name>
-            <url>file://${project.basedir}/repo</url>
         </repository>
     </repositories>
     <pluginRepositories>
