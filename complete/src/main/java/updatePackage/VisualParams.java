@@ -5,19 +5,19 @@ public class VisualParams {
 	private double longitude;
 	private Number dataValue;
 	private String dataType;
-	private String time;
+	private String dateTime;
 	
 	/*
 	 * Create a new VisualParams object
 	 */
 	VisualParams(double latitude, double longitude, 
-			Number dataValue, String dataType, String time) {
+			Number dataValue, String dataType, String dateTime) {
 		
 		setLatitude(latitude);
 		setLongitude(longitude);
 		setDataValue(dataValue);
 		setDataType(dataType);
-		setTime(time);
+		setDateTime(dateTime);
 	}
 	VisualParams() {}
 	
@@ -33,8 +33,8 @@ public class VisualParams {
 	public void setDataType(String dataType) {
 		this.dataType = dataType;
 	}
-	public void setTime(String time) {
-		this.time = time;
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
 	}
 	
 	public double getLatitude() {
@@ -49,7 +49,7 @@ public class VisualParams {
 	public String getDataType() {
 		return this.dataType;
 	}
-	public String getTime() {
-		return this.time;
+	public String getDateTime() {
+		return this.dateTime;
 	}
 }

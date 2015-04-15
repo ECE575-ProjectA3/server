@@ -4,7 +4,7 @@ public class CoverageParams {
     private double latitude;
     private double longitude;
     private String carrierName;    
-    private String time;
+    private String dateTime;
     
     private int    signalStrength;
     private double downloadSpeed;
@@ -13,14 +13,14 @@ public class CoverageParams {
     private double wifiDownloadSpeed;
     private double wifiUploadSpeed;
     
-    CoverageParams(double latitude, double longitude, String carrierName, String time, 
+    CoverageParams(double latitude, double longitude, String carrierName, String dateTime, 
     		int signalStrength, double downloadSpeed, double uploadSpeed, 
     		int wifiSignalStrength, double wifiDownloadSpeed, double wifiUploadSpeed) {
     	
     	setLatitude(latitude);
     	setLongitude(longitude);
     	setCarrierName(carrierName);
-    	setTime(time);
+    	setDateTime(dateTime);
     	
     	setSignalStrength(signalStrength);
     	setDownloadSpeed(downloadSpeed);
@@ -30,23 +30,23 @@ public class CoverageParams {
     	setWifiDownloadSpeed(wifiDownloadSpeed);
     	setWifiUploadSpeed(wifiUploadSpeed);
     }
-    CoverageParams(double latitude, double longitude, String carrierName, String time, 
+    CoverageParams(double latitude, double longitude, String carrierName, String dateTime, 
     		int signalStrength, double downloadSpeed, double uploadSpeed) {
     	
     	setLatitude(latitude);
     	setLongitude(longitude);
     	setCarrierName(carrierName);
-    	setTime(time);
+    	setDateTime(dateTime);
     	
     	setSignalStrength(signalStrength);
     	setDownloadSpeed(downloadSpeed);
     	setUploadSpeed(uploadSpeed);
     }
-    CoverageParams(double latitude, double longitude, String carrierName, String time) {
+    CoverageParams(double latitude, double longitude, String carrierName, String dateTime) {
     	setLatitude(latitude);
     	setLongitude(longitude);
     	setCarrierName(carrierName);
-    	setTime(time);
+    	setDateTime(dateTime);
     }
     CoverageParams() {}
     
@@ -59,8 +59,8 @@ public class CoverageParams {
     public void setCarrierName(String carrierName) {
     	this.carrierName = carrierName;
     }
-    public void setTime(String time) {
-    	this.time = time;
+    public void setDateTime(String dateTime) {
+    	this.dateTime = dateTime;
     }
     public void setSignalStrength(int signalStrength) {
         this.signalStrength = signalStrength;
@@ -90,8 +90,8 @@ public class CoverageParams {
     public String getCarrierName() {
     	return this.carrierName;
     }
-    public String getTime() {
-    	return this.time;
+    public String getDateTime() {
+    	return this.dateTime;
     }
     public int getSignalStrength() {
         return this.signalStrength;

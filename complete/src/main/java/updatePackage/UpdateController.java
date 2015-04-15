@@ -1,7 +1,5 @@
 package updatePackage;
 
-//import java.util.concurrent.atomic.AtomicLong;
-
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,15 +32,15 @@ public class UpdateController {
     	System.out.println("SignalStrengthLevel:"+coverageParams.getSignalStrength());
     	System.out.println("Service provider:"+coverageParams.getCarrierName());
     	System.out.println("Data speed:"+coverageParams.getDownloadSpeed());
-    	System.out.println("Date:"+coverageParams.getTime());
+    	System.out.println("Date:"+coverageParams.getDateTime());
     	
     	//Create new JSONObject for data
     	JSONObject data = new JSONObject();
     	data.put("latitude", coverageParams.getLatitude());
     	data.put("longitude", coverageParams.getLongitude());
     	data.put("signalStrength", coverageParams.getSignalStrength());
-    	data.put("date", coverageParams.getTime().split(" ")[0]);
-    	data.put("time", coverageParams.getTime().split(" ")[1]);
+    	data.put("date", coverageParams.getDateTime().split(" ")[0]);
+    	data.put("time", coverageParams.getDateTime().split(" ")[1]);
     	
     	JSONParser parser = new JSONParser();
         JSONArray carrierData;

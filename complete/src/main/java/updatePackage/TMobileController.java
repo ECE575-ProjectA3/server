@@ -21,7 +21,7 @@ public class TMobileController {
     	System.out.println("SignalStrengthLevel:"+coverageParams.getSignalStrength());
     	System.out.println("Service provider:"+coverageParams.getCarrierName());
     	System.out.println("Data speed:"+coverageParams.getDownloadSpeed());
-    	System.out.println("Date-time:"+coverageParams.getTime());
+    	System.out.println("Date-time:"+coverageParams.getDateTime());
     	
     	/* store the data into database */
     	mStorage.storeSensorData(coverageParams);
