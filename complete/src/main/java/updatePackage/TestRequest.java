@@ -1,5 +1,7 @@
 package updatePackage;
 
+import java.util.List;
+import java.util.ArrayList;
 //import org.springframework.http.*;
 //import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,23 +26,19 @@ public class TestRequest {
 	
 	private int[] signalLevelArray = {30,20,10,0,30,20,10,0,30,20,10};
 	
-	private int[] dateArray = {20150101,20150202,20150303,20150404,
-			20150505,20150606,20150707,20150808,20150909,20151010,20151111};
-	
-	private int[] timeArray = {130,200,230,300,330,400,430,500,530,600,630};
+	private String[] timeArray = {"130","200","230","300","330","400","430","500","530","600","630"};
 	
 	@RequestMapping(value = "/testRequest", method=RequestMethod.GET)
 	public VisualParams[] getTestData() {
-		VisualParams[] result = new VisualParams[latitudeArray.length];
+		
+		List<VisualParams> result = new ArrayList<VisualParams>();	//initialize results list
+		
 		for (int i = 0; i < latitudeArray.length; i++) {
-			result[i] = new VisualParams();
-			result[i].setLatitude(latitudeArray[i]);
-			result[i].setLongitude(longitudeArray[i]);
-			result[i].setSignalStrength(signalLevelArray[i]);
-			result[i].setDate(dateArray[i]);
-			result[i].setTime(timeArray[i]);
+			result.add(new VisualParams( latitudeArray[i], longitudeArray[i],
+					signalLevelArray[i], "signalStrength", timeArray[i]));
 		}
-		return result;
+		
+		return result.toArray(new VisualParams[result.size()]);		//return results list
 	}
 
 }

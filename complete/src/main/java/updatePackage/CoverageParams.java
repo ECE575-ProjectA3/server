@@ -1,67 +1,114 @@
 package updatePackage;
 
-class CoverageParams {
-
-    private Double 	longitude;
-    private Double 	latitude;
-    private Integer signalLevel;
-    private String  networkProviderName;
-    private Double  dataSpeed;
-    private Double  dataUploadSpeed;
-    private Integer wifiSignalLevel;
-    private Double  wifiDownloadSpeed;
-    private Double  wifiUploadSpeed;    
-    private String 	dateTime;
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
+public class CoverageParams {
+    private double latitude;
+    private double longitude;
+    private String carrierName;    
+    private String time;
+    
+    private int    signalStrength;
+    private double downloadSpeed;
+    private double uploadSpeed;
+    private int    wifiSignalStrength;
+    private double wifiDownloadSpeed;
+    private double wifiUploadSpeed;
+    
+    CoverageParams(double latitude, double longitude, String carrierName, String time, 
+    		int signalStrength, double downloadSpeed, double uploadSpeed, 
+    		int wifiSignalStrength, double wifiDownloadSpeed, double wifiUploadSpeed) {
+    	
+    	setLatitude(latitude);
+    	setLongitude(longitude);
+    	setCarrierName(carrierName);
+    	setTime(time);
+    	
+    	setSignalStrength(signalStrength);
+    	setDownloadSpeed(downloadSpeed);
+    	setUploadSpeed(uploadSpeed);
+    	
+    	setWifiSignalStrength(wifiSignalStrength);
+    	setWifiDownloadSpeed(wifiDownloadSpeed);
+    	setWifiUploadSpeed(wifiUploadSpeed);
+    }
+    CoverageParams(double latitude, double longitude, String carrierName, String time, 
+    		int signalStrength, double downloadSpeed, double uploadSpeed) {
+    	
+    	setLatitude(latitude);
+    	setLongitude(longitude);
+    	setCarrierName(carrierName);
+    	setTime(time);
+    	
+    	setSignalStrength(signalStrength);
+    	setDownloadSpeed(downloadSpeed);
+    	setUploadSpeed(uploadSpeed);
+    }
+    CoverageParams(double latitude, double longitude, String carrierName, String time) {
+    	setLatitude(latitude);
+    	setLongitude(longitude);
+    	setCarrierName(carrierName);
+    	setTime(time);
+    }
+    CoverageParams() {}
+    
+    public void setLatitude(double latitude) {
+    	this.latitude = latitude;
+    }
+    public void setLongitude(double longitude) {
+    	this.longitude = longitude;
+    }
+    public void setCarrierName(String carrierName) {
+    	this.carrierName = carrierName;
+    }
+    public void setTime(String time) {
+    	this.time = time;
+    }
+    public void setSignalStrength(int signalStrength) {
+        this.signalStrength = signalStrength;
+    }
+    public void setDownloadSpeed(double downloadSpeed) {
+    	this.downloadSpeed = downloadSpeed;
+    }
+    public void setUploadSpeed(double uploadSpeed) {
+    	this.uploadSpeed = uploadSpeed;
+    }
+    public void setWifiSignalStrength(Integer wifiSignalStrength) {
+    	this.wifiSignalStrength = wifiSignalStrength;
+    }
+    public void setWifiDownloadSpeed(Double wifiDownloadSpeed) {
+    	this.wifiDownloadSpeed = wifiDownloadSpeed;
+    }
+    public void setWifiUploadSpeed(Double wifiUploadSpeed) {
+    	this.wifiUploadSpeed = wifiUploadSpeed;
     }
 
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
+    public double getLongitude() {
+        return this.longitude;
     }
-
-    public void setSignalLevel(Integer signalLevel) {
-        this.signalLevel = signalLevel;
+    public double getLatitude() {
+        return this.latitude;
     }
-
-    public void setNetworkProviderName(String networkProviderName) { this.networkProviderName = networkProviderName;}
-
-    public void setDataSpeed(Double dataSpeed) { this.dataSpeed = dataSpeed;}
-    
-    public void setDataUploadSpeed(Double dataUploadSpeed) { this.dataUploadSpeed = dataUploadSpeed;}
-    
-    public void setWifiSignalLevel(Integer wifiSignalLevel) { this.wifiSignalLevel = wifiSignalLevel;}
-    
-    public void setWifiDownloadSpeed(Double wifiDownloadSpeed) { this.wifiDownloadSpeed = wifiDownloadSpeed;}
-    
-    public void setWifiUploadSpeed(Double wifiUploadSpeed) { this.wifiUploadSpeed = wifiUploadSpeed;}
-
-    public void setDateTime(String dateTime) {this.dateTime = dateTime;}
-
-    public Double getLongitude() {
-        return longitude;
+    public String getCarrierName() {
+    	return this.carrierName;
     }
-
-    public Double getLatitude() {
-        return latitude;
+    public String getTime() {
+    	return this.time;
     }
-
-    public Integer getSignalLevel() {
-        return signalLevel;
+    public int getSignalStrength() {
+        return this.signalStrength;
     }
-
-    public String getNetworkProviderName() {return networkProviderName;}
-
-    public Double getDataSpeed() { return dataSpeed;}
-    
-    public Double getDataUploadSpeed() { return dataUploadSpeed; }
-    
-    public Integer getWifiSignalLevel() { return wifiSignalLevel; }
-    
-    public Double getWifiDownloadSpeed() { return wifiDownloadSpeed;}
-    
-    public Double getWifiUploadSpeed() { return wifiUploadSpeed;}
-
-    public String getDateTime() { return dateTime;}
+    public Double getDownloadSpeed() {
+    	return this.downloadSpeed;
+    }
+    public Double getUploadSpeed() {
+    	return this.uploadSpeed;
+    }
+    public Integer getWifiSignalStrength() {
+    	return wifiSignalStrength;
+    }
+    public Double getWifiDownloadSpeed() {
+    	return wifiDownloadSpeed;
+    }
+    public Double getWifiUploadSpeed() {
+    	return wifiUploadSpeed;
+    }
 }

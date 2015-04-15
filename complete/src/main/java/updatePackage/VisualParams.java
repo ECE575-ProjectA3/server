@@ -1,29 +1,55 @@
 package updatePackage;
 
 public class VisualParams {
-	private double longitude;
 	private double latitude;
-	private int    signalStrength;
-	private int    date;
-	private int    time;
+	private double longitude;
+	private Number dataValue;
+	private String dataType;
+	private String time;
 	
-	public void setLongitude(double longitude)        { this.longitude = longitude;           }
-	public void setLatitude(double latitude)          { this.latitude = latitude;             }
-	public void setSignalStrength(int signalStrength) { this.signalStrength = signalStrength; }
-	public void setDate(int date)                     { this.date = date;                     }
-	public void setTime(int time)                     { this.time = time;                     }
+	/*
+	 * Create a new VisualParams object
+	 */
+	VisualParams(double latitude, double longitude, 
+			Number dataValue, String dataType, String time) {
+		
+		setLatitude(latitude);
+		setLongitude(longitude);
+		setDataValue(dataValue);
+		setDataType(dataType);
+		setTime(time);
+	}
+	VisualParams() {}
 	
-	public double getLongitude()      { return this.longitude;      }
-	public double getLatitude()       { return this.latitude;       }
-	public int    getSignalStrength() { return this.signalStrength; }
-	public int    getDate()           { return this.date;           }
-	public int    getTime()           { return this.time;           }
-	
-	public static int calcDate(int year, int month, int day) {
-		return (year*10000) + (month*100) + (day);
+	public void setLatitude(double latitude){
+		this.latitude = latitude;
+	}
+	public void setLongitude(double longitude){
+		this.longitude = longitude;
+	}
+	public void setDataValue(Number dataValue) {
+		this.dataValue = dataValue;
+	}
+	public void setDataType(String dataType) {
+		this.dataType = dataType;
+	}
+	public void setTime(String time) {
+		this.time = time;
 	}
 	
-	public static int calcTime(int hour, int minute) {
-		return (hour*100) + (minute);
+	public double getLatitude() {
+		return this.latitude;
+	}
+	public double getLongitude() {
+		return this.longitude;
+	}
+	public Number getDataValue() {
+		return this.dataValue;
+	}
+	public String getDataType() {
+		return this.dataType;
+	}
+	public String getTime() {
+		return this.time;
 	}
 }

@@ -33,7 +33,7 @@ public class StoreData {
 			con = DriverManager.getConnection(url, user, password);
 		    st = con.createStatement();
 		    
-		    String carrierName = cp.getNetworkProviderName();
+		    String carrierName = cp.getCarrierName();
 		    if (carrierName.equals("T-Mobile")==true) {
 		    	carrierName = "TMobile";
 		    }
@@ -41,11 +41,11 @@ public class StoreData {
 			query = "INSERT INTO "+ carrierName + " ";
 			query += "(longitude,latitude,signalStrength,downloadSpeed,uploadSpeed,";
 			query += "wifiSignalLevel, wifiDownloadSpeed,wifiUploadSpeed, ts) VALUES (";
-			query += cp.getLongitude() + "," + cp.getLatitude() + "," + cp.getSignalLevel() +",";
-			query += cp.getDataSpeed() + "," + cp.getDataUploadSpeed() + ",";
-			query += cp.getWifiSignalLevel() + "," + cp.getWifiDownloadSpeed() + ",";
+			query += cp.getLongitude() + "," + cp.getLatitude() + "," + cp.getSignalStrength() +",";
+			query += cp.getDownloadSpeed() + "," + cp.getUploadSpeed() + ",";
+			query += cp.getWifiSignalStrength() + "," + cp.getWifiDownloadSpeed() + ",";
 			query += cp.getWifiUploadSpeed() + ",'";
-			query += cp.getDateTime() + "')";
+			query += cp.getTime() + "')";
 			
 			System.out.println(query);			
 		    
@@ -60,7 +60,7 @@ public class StoreData {
 		}		
 	}	
 	
-	public ArrayList<VisualParams> getData(String carrierName) {
+	public ArrayList<VisualParams> getData(String carrierName, String dataType) {
 		
 		ArrayList<VisualParams> vpa = new ArrayList<VisualParams>(); 
 		
@@ -81,13 +81,13 @@ public class StoreData {
 		    ResultSet rs = st.executeQuery(query);	
 		    
 		    while (rs.next()) {
-		    	VisualParams vp = new VisualParams();
-		    	vp.setLongitude(Double.parseDouble(rs.getString("longitude")));
-		    	vp.setLatitude(Double.parseDouble(rs.getString("latitude")));
-		    	vp.setSignalStrength(Integer.parseInt(rs.getString("signalStrength")));
-		    	vp.setDate(1);
-		    	vp.setTime(2);
-		    	vpa.add(vp);
+		    	Number dataValue;
+		    	if(dataType=="signalStrength") {
+		    		dataValue = rs.getInt(dataType);
+		    	} else {
+		    		dataValue = rs.getDouble(dataType);
+		    	}
+		    	vpa.add(new VisualParams(rs.getDouble("latitude"),rs.getDouble("longitude"),dataValue, dataType, rs.getString("time")));
 		    }
 		} catch (SQLException ex) {
 			System.out.println("Unable to perform query operation");

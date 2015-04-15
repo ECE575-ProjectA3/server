@@ -31,28 +31,28 @@ public class UpdateController {
     public void update(@RequestBody CoverageParams coverageParams) {
     	System.out.println("Longitude:"+coverageParams.getLongitude());
     	System.out.println("Latitude:"+coverageParams.getLatitude());
-    	System.out.println("SignalStrengthLevel:"+coverageParams.getSignalLevel());
-    	System.out.println("Service provider:"+coverageParams.getNetworkProviderName());
-    	System.out.println("Data speed:"+coverageParams.getDataSpeed());
-    	System.out.println("Date:"+coverageParams.getDateTime());
+    	System.out.println("SignalStrengthLevel:"+coverageParams.getSignalStrength());
+    	System.out.println("Service provider:"+coverageParams.getCarrierName());
+    	System.out.println("Data speed:"+coverageParams.getDownloadSpeed());
+    	System.out.println("Date:"+coverageParams.getTime());
     	
     	//Create new JSONObject for data
     	JSONObject data = new JSONObject();
     	data.put("latitude", coverageParams.getLatitude());
     	data.put("longitude", coverageParams.getLongitude());
-    	data.put("signalStrength", coverageParams.getSignalLevel());
-    	data.put("date", coverageParams.getDateTime().split(" ")[0]);
-    	data.put("time", coverageParams.getDateTime().split(" ")[1]);
+    	data.put("signalStrength", coverageParams.getSignalStrength());
+    	data.put("date", coverageParams.getTime().split(" ")[0]);
+    	data.put("time", coverageParams.getTime().split(" ")[1]);
     	
     	JSONParser parser = new JSONParser();
         JSONArray carrierData;
     	try {
         	//parse JSON file and add new data
-            carrierData = (JSONArray) parser.parse(new FileReader(coverageParams.getNetworkProviderName()+".json"));
+            carrierData = (JSONArray) parser.parse(new FileReader(coverageParams.getCarrierName()+".json"));
             carrierData.add(data);
             
             //write updated JSON back to file
-            FileWriter file = new FileWriter(coverageParams.getNetworkProviderName()+".json");
+            FileWriter file = new FileWriter(coverageParams.getCarrierName()+".json");
             file.write(carrierData.toJSONString());
             file.flush();
             file.close();

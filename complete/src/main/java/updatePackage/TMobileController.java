@@ -18,10 +18,10 @@ public class TMobileController {
 	public void update(@RequestBody CoverageParams coverageParams) {
 		System.out.println("Longitude:"+coverageParams.getLongitude());
     	System.out.println("Latitude:"+coverageParams.getLatitude());
-    	System.out.println("SignalStrengthLevel:"+coverageParams.getSignalLevel());
-    	System.out.println("Service provider:"+coverageParams.getNetworkProviderName());
-    	System.out.println("Data speed:"+coverageParams.getDataSpeed());
-    	System.out.println("Date-time:"+coverageParams.getDateTime());
+    	System.out.println("SignalStrengthLevel:"+coverageParams.getSignalStrength());
+    	System.out.println("Service provider:"+coverageParams.getCarrierName());
+    	System.out.println("Data speed:"+coverageParams.getDownloadSpeed());
+    	System.out.println("Date-time:"+coverageParams.getTime());
     	
     	/* store the data into database */
     	mStorage.storeSensorData(coverageParams);
@@ -29,7 +29,7 @@ public class TMobileController {
 	
 	@RequestMapping(value="/T-Mobile",method=RequestMethod.GET)
 	public ArrayList<VisualParams> getData() {
-		return mStorage.getData("T-Mobile");		
+		return mStorage.getData("T-Mobile","signalStrength");		
 	}
 
 }
