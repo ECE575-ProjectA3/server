@@ -1,39 +1,37 @@
 package updatePackage;
 
-import org.springframework.http.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.http.HttpStatus;
+/*
 import java.io.FileReader;
 import java.io.FileWriter;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
+*/
 
 @ResponseStatus(value=HttpStatus.BAD_REQUEST, reason="Bad Request")  // 400
 class BadRequestException extends RuntimeException {
 	static final long serialVersionUID = 0;
-    // ...
 }
 
 @RestController
 public class UpdateController {
 
-    @SuppressWarnings("unchecked")
+	@Autowired 
+	private StoreData mStorage;
+	
 	@RequestMapping(value = "/update", method=RequestMethod.POST)
     public void update(@RequestBody CoverageParams coverageParams) {
-    	System.out.println("Longitude:"+coverageParams.getLongitude());
-    	System.out.println("Latitude:"+coverageParams.getLatitude());
-    	System.out.println("SignalStrengthLevel:"+coverageParams.getSignalStrength());
-    	System.out.println("Service provider:"+coverageParams.getCarrierName());
-    	System.out.println("Data speed:"+coverageParams.getDownloadSpeed());
-    	System.out.println("Date:"+coverageParams.getDateTime());
+    	mStorage.storeSensorData(coverageParams);
     	
+    	/* JSON file handling for primitive storage
     	//Create new JSONObject for data
     	JSONObject data = new JSONObject();
     	data.put("latitude", coverageParams.getLatitude());
@@ -57,10 +55,7 @@ public class UpdateController {
             
         } catch (Exception e) {
             e.printStackTrace();
-        }   	
+        }
+        */  	
     }
-    /*
-    public void update() {
-    	System.out.println("Message reached");
-    }*/
 }

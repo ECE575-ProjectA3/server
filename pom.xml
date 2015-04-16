@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework</groupId>
-    <artifactId>gs-rest-service</artifactId>
+    <artifactId>dataServer</artifactId>
     <version>0.1.0</version>
 
     <parent>
@@ -21,12 +21,10 @@
         <dependency>
         	<groupId>mysql</groupId>
         	<artifactId>mysql-connector-java</artifactId>
-        	<version>5.1.35</version>
-        </dependency>
+        	</dependency>
         <dependency>
         	<groupId>com.googlecode.json-simple</groupId>
         	<artifactId>json-simple</artifactId>
-        	<version>1.1</version>
         </dependency>
     </dependencies>
 
