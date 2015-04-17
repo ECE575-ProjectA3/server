@@ -52,6 +52,21 @@ public class StoreData {
 		System.out.println("Loaded JDBC driver");
 	}
 	
+	private String getDatabaseCarrierName(String carrierName) {
+		//strip special characters from carrierName
+	    String dbCarrierName = carrierName;
+	    if (carrierName.equals("T-Mobile")==true) {
+	    	dbCarrierName = "TMobile";
+	    }
+	    if (carrierName.equals("US Cellular")==true) {
+	    	dbCarrierName = "USCellular";
+	    }
+	    if (carrierName.equals("AT&T")==true) {
+	    	dbCarrierName = "ATT";
+	    }	    
+	    return dbCarrierName;
+	}
+	
 	/*
 	 * Store data in the corresponding table
 	 */
@@ -60,17 +75,7 @@ public class StoreData {
 			Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 		    Statement statement = connection.createStatement();
 		    
-		    //strip special characters from carrierName
-		    String carrierName = input.getCarrierName();
-		    if (carrierName.equals("T-Mobile")==true) {
-		    	carrierName = "TMobile";
-		    }
-		    if (carrierName.equals("US Cellular")==true) {
-		    	carrierName = "USCellular";
-		    }
-		    if (carrierName.equals("AT&T")==true) {
-		    	carrierName = "ATT";
-		    }
+		    String carrierName = getDatabaseCarrierName(input.getCarrierName());
 			
 		    //populate SQL insert statement from given data
 			String insert = "INSERT INTO "+ carrierName
@@ -131,22 +136,13 @@ public class StoreData {
 			Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
 		    Statement statement = connection.createStatement();
 		    
-		    //strip special characters from carrierName
-			if (carrierName.equals("T-Mobile")) {
-				carrierName = "TMobile";
-			}
-		    if (carrierName.equals("US Cellular")==true) {
-		    	carrierName = "USCellular";
-		    }
-		    if (carrierName.equals("AT&T")==true) {
-		    	carrierName = "ATT";
-		    }
+			carrierName = getDatabaseCarrierName(carrierName);
 		    
 		    //populate SQL query filtered by date and time range
 		    String query = "SELECT * FROM "+ carrierName
 		    		+ " WHERE "+DATETIME+" > "+ minDate +" AND "+DATETIME+" <= DATEADD(day,1,"+ maxDate +")"
-		    		+ " AND DATEPART(hh,"+DATETIME+") >= "+ minTime
-		    		+ " AND DATEPART(hh,"+DATETIME+") <= "+ maxTime;
+		    		+ " AND HOUR("+DATETIME+") >= "+ minTime
+		    		+ " AND HOUR("+DATETIME+") <= "+ maxTime;
 		    
 		    System.out.println(query);
 		    ResultSet result = statement.executeQuery(query);	//execute data query
