@@ -34,7 +34,7 @@ public class StoreData {
 			-78.67056369781494,	-78.68086338043213,	-78.70824337005615,
 			-78.72395038604736,	-78.73201847076416};
 	
-	private int[] testSignalStrength = {30,20,10,0,30,20,10,0,30,20,10};
+	private int[] testSignalStrength = {3,2,1,0,3,2,1,0,3,2,1};
 	
 	private String[] testDateTime = 
 		   {"01/01/2014 03:35","02/02/2014 13:52","03/03/2014 21:21",
