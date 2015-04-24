@@ -103,7 +103,7 @@ public class StoreData {
 					+ " ("+LATITUDE+","+LONGITUDE+","+SIGNALSTRENGTH+","
 					+ DOWNLOADSPEED+","+UPLOADSPEED+","+DATETIME+") VALUES ("
 					+ input.getLatitude() +","+ input.getLongitude() +","+ input.getWifiSignalStrength() +","
-					+ input.getWifiDownloadSpeed() +","+ input.getWifiUploadSpeed() +","+ input.getDateTime() +")";
+					+ input.getWifiDownloadSpeed() +","+ input.getWifiUploadSpeed() +",'"+ input.getDateTime() +"')";
 			
 			System.out.println(insert);
 		    statement.execute(insert);	//execute data insertion operation
