@@ -140,7 +140,7 @@ public class StoreData {
 		    
 		    //populate SQL query filtered by date and time range
 		    String query = "SELECT * FROM "+ carrierName
-		    		+ " WHERE DATE("+DATETIME+") > "+ "DATE('" + minDate + "')" 
+		    		+ " WHERE DATE("+DATETIME+") >= "+ "DATE('" + minDate + "')" 
 		    		+" AND DATE("+DATETIME+") <= DATE('"+ maxDate + "')" 
 		    		+ " AND HOUR("+DATETIME+") >= "+ minTime
 		    		+ " AND HOUR("+DATETIME+") < "+ maxTime;
